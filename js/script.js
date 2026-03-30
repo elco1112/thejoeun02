@@ -51,4 +51,45 @@ document.addEventListener('DOMContentLoaded', function(){
             }, 1200);
         });
     }
+
+    // 4. 프로젝트 섹션 좌우 화살표 슬라이드 (무한 루프)
+    const projectContainer = document.querySelector('.project-container');
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
+
+    if (projectContainer && prevBtn && nextBtn) {
+        // 카드 1개 너비 + 여백(gap) 구하기
+        const getScrollAmount = () => {
+            const card = projectContainer.querySelector('.project-card');
+            return card.offsetWidth + 24; 
+        };
+
+        // 오른쪽(다음) 버튼 클릭
+        nextBtn.addEventListener('click', () => {
+            const scrollAmount = getScrollAmount();
+            const maxScrollLeft = projectContainer.scrollWidth - projectContainer.clientWidth;
+            
+            // 현재 맨 오른쪽 끝에 도달했는지 확인 (오차 범위 10px 허용)
+            if (projectContainer.scrollLeft >= maxScrollLeft - 10) {
+                // 맨 끝이면 처음(1번)으로 슉! 돌아감
+                projectContainer.scrollTo({ left: 0, behavior: 'smooth' });
+            } else {
+                projectContainer.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            }
+        });
+
+        // 왼쪽(이전) 버튼 클릭
+        prevBtn.addEventListener('click', () => {
+            const scrollAmount = getScrollAmount();
+            const maxScrollLeft = projectContainer.scrollWidth - projectContainer.clientWidth;
+            
+            // 현재 맨 앞(1번)에 있는지 확인
+            if (projectContainer.scrollLeft <= 10) {
+                // 맨 앞이면 끝(9번)으로 슉! 이동
+                projectContainer.scrollTo({ left: maxScrollLeft, behavior: 'smooth' });
+            } else {
+                projectContainer.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+            }
+        });
+    }
 });
