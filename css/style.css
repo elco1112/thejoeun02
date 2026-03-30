@@ -63,9 +63,9 @@ ul{
 }
 
 .top-nav .nav-container{
-    max-width: 1200px;
+    max-width: 1280px;
     margin: 0 auto;
-    padding: 20px 5%;
+    padding: 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -81,11 +81,11 @@ ul{
 
 .top-nav .nav-menu{
     display: flex;
-    gap: 40px;
+    gap: 50px;
 }
 
 .top-nav .nav-menu li a{
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 500;
     color: var(--color-text-gray);
     transition: color 0.3s;
@@ -93,13 +93,14 @@ ul{
 
 .top-nav .nav-menu li a:hover{
     color: var(--color-primary);
+    font-weight: 700;
 }
 
 .top-nav .nav-cta{
     background-color: var(--color-primary);
     color: var(--color-white);
     padding: 10px 24px;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 500;
     transition: background-color 0.3s;
 }
@@ -191,8 +192,8 @@ ul{
 
 /* 전체 섹션 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ */
 section{
-    padding: 100px 5%;
-    max-width: 1200px;
+    padding: 100px;
+    max-width: 1440px;
     margin: 0 auto;
 }
 
@@ -245,7 +246,7 @@ section{
 }
 
 .tab-section .tab-content-area{
-    padding: 60px;
+    padding: 60px 60px 90px 60px;
 }
 
 .tab-section .tab-panel{
@@ -296,6 +297,10 @@ section{
     grid-template-columns: 1fr 1fr;
     gap: 60px;
     align-items: center;
+    background-color: var(--color-white);
+    padding: 60px; /* 안쪽 여백을 넉넉하게 주어 답답하지 않게 */
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-md);
 }
 
 .info-section .detail-list li{
@@ -576,7 +581,6 @@ section{
 .project-section .project-card {
     flex: 0 0 calc(33.333% - 16px); 
     scroll-snap-align: start; 
-    
     background-color: var(--color-white);
     border: 1px solid var(--color-border);
     box-shadow: var(--shadow-sm);
@@ -616,13 +620,13 @@ section{
 }
 
 .project-section .project-info h3 {
-    font-size: 20px;
+    font-size: 21px;
     margin-bottom: 12px;
     color: var(--color-text-dark);
 }
 
 .project-section .project-info p {
-    font-size: 15px;
+    font-size: 16px;
     color: var(--color-text-gray);
     line-height: 1.6;
     margin-bottom: 24px;
@@ -647,12 +651,12 @@ section{
     transform: translateY(-50%);
     width: 50px;
     height: 50px;
-    background-color: var(--color-white);
+    background-color: var(--color-primary);
     border: 1px solid var(--color-border);
     border-radius: 50%;
     box-shadow: var(--shadow-md);
-    font-size: 20px;
-    color: var(--color-primary);
+    font-size: 24px;
+    color: var(--color-white);
     cursor: pointer;
     z-index: 10;
     display: flex;
@@ -662,8 +666,8 @@ section{
 }
 
 .project-section .nav-btn:hover {
-    background-color: var(--color-primary);
-    color: var(--color-white);
+    background-color: var(--color-white);
+    color: var(--color-primary);
 }
 
 .project-section .prev-btn { left: -65px; }
@@ -904,6 +908,7 @@ section{
     }
     .info-section .info-container{
         grid-template-columns: 1fr;
+        padding: 40px 20px;
     }
     .facility-section .facility-gallery{
         grid-template-columns: 1fr;
