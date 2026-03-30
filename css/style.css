@@ -851,63 +851,101 @@ section{
 }
 
 /* contact-area section ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ */
-.contact-area .contact-box{
+.contact-area .contact-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 5:5 비율 좌우 배치 */
+    gap: 40px; /* 지도와 폼 박스 사이 간격 */
+    max-width: 1440px;
+    margin: 0 auto;
+    align-items: stretch; /* 양쪽 박스 높이를 동일하게 맞춤 */
+}
+
+/* 좌측 지도 스타일 */
+.contact-area .map-side {
+    width: 100%;
+    height: 100%;
+}
+
+.contact-area .map-container {
+    width: 100%;
+    height: 100%;
+    min-height: 500px;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--color-border);
+}
+.contact-area .map-container .root_daum_roughmap {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.contact-area .map-container .root_daum_roughmap .wrap_map {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* 우측 폼 박스 스타일 (기존 디자인 복구 및 유지) */
+.contact-area .contact-box {
     background-color: var(--color-white);
     border: 1px solid var(--color-border);
     padding: 60px;
-    max-width: 800px;
-    margin: 0 auto;
     box-shadow: var(--shadow-md);
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* 내부 요소 세로 중앙 정렬 */
 }
 
-.contact-area .contact-header{
+.contact-area .contact-header {
     text-align: center;
     margin-bottom: 40px;
 }
 
-.contact-area .contact-header h2{
+.contact-area .contact-header h2 {
     font-size: 42px;
     margin-bottom: 5px;
 }
-.contact-area .contact-header p{
+
+.contact-area .contact-header p {
     font-size: 18px;
     color: var(--color-text-gray);
 }
-.contact-area .contact-form .form-grid{
+
+.contact-area .contact-form .form-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
 }
 
-.contact-area .input-wrap{
+.contact-area .input-wrap {
     margin-bottom: 20px;
     display: flex;
     flex-direction: column;
 }
 
 .contact-area input,
-.contact-area textarea{
+.contact-area textarea {
     padding: 16px;
     border: 1px solid var(--color-border);
     font-family: inherit;
     font-size: 16px;
     background-color: #f8fafc;
     transition: border-color 0.3s;
+    border-radius: 8px;
 }
 
-.contact-area textarea{
+.contact-area textarea {
     height: 120px;
     resize: none;
 }
 
 .contact-area input:focus,
-.contact-area textarea:focus{
+.contact-area textarea:focus {
     outline: none;
     border-color: var(--color-primary);
     background-color: var(--color-white);
 }
 
-.contact-area .btn-submit-large{
+.contact-area .btn-submit-large {
     width: 100%;
     padding: 18px;
     background-color: var(--color-primary);
@@ -918,20 +956,21 @@ section{
     cursor: pointer;
     margin-top: 10px;
     transition: background-color 0.3s;
+    border-radius: 8px;
 }
 
-.contact-area .btn-submit-large:hover{
+.contact-area .btn-submit-large:hover {
     background-color: var(--color-primary-hover);
 }
 
-.contact-area .contact-footer-info{
+.contact-area .contact-footer-info {
     margin-top: 30px;
     padding-top: 30px;
     border-top: 1px solid var(--color-border);
     display: flex;
     flex-direction: column;
     gap: 10px;
-    font-size: 18px;
+    font-size: 16px;
     color: var(--color-text-gray);
     font-weight: 500;
     text-align: center;
@@ -993,6 +1032,16 @@ section{
     }
     .project-section .project-card {
         flex: 0 0 calc(50% - 12px); 
+    }
+    .contact-area .contact-wrapper {
+        grid-template-columns: 1fr; /* 위:지도, 아래:폼으로 떨어지게 함 */
+        gap: 40px;
+    }
+    .contact-area .map-container {
+        min-height: 400px;
+    }
+    .contact-area .contact-box {
+        padding: 40px 20px;
     }
 }
 
