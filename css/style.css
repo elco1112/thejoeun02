@@ -365,7 +365,7 @@ section{
     gap: 60px;
     align-items: center;
     background-color: var(--color-white);
-    padding: 60px; /* 안쪽 여백을 넉넉하게 주어 답답하지 않게 */
+    padding: 60px;
     border: 1px solid var(--color-border);
     box-shadow: var(--shadow-md);
 }
