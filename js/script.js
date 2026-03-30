@@ -92,4 +92,31 @@ document.addEventListener('DOMContentLoaded', function(){
             }
         });
     }
+
+    // 5. 커리큘럼 아코디언 기능 (다른 항목 자동 닫힘 적용)
+    const accordionHeaders = document.querySelectorAll('.accordion-header');
+
+    accordionHeaders.forEach(header => {
+        header.addEventListener('click', function() {
+            // 1. 내가 클릭한 요소가 아닌, 이미 열려있는 다른 아코디언들을 모두 찾아 닫기
+            accordionHeaders.forEach(otherHeader => {
+                if (otherHeader !== this && otherHeader.classList.contains('active')) {
+                    otherHeader.classList.remove('active'); // active 클래스 제거 (아이콘 원상복구)
+                    otherHeader.nextElementSibling.style.maxHeight = null; // 높이를 0으로 만들어 닫기
+                }
+            });
+
+            // 2. 클릭한 요소의 상태 토글 (열기/닫기)
+            this.classList.toggle('active');
+            const content = this.nextElementSibling;
+            
+            if (content.style.maxHeight) {
+                // 이미 열려있다면 닫기
+                content.style.maxHeight = null;
+            } else {
+                // 닫혀있다면 콘텐츠의 실제 높이(scrollHeight)만큼 열어주기
+                content.style.maxHeight = content.scrollHeight + "px";
+            }
+        });
+    });
 });

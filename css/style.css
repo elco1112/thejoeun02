@@ -290,6 +290,73 @@ section{
     color: var(--color-text-gray);
     line-height: 1.6;
 }
+/* tab-section accordionㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ */
+.tab-section .accordion-container {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.tab-section .accordion-item {
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: var(--color-bg);
+}
+
+.tab-section .accordion-header {
+    width: 100%;
+    text-align: left;
+    padding: 16px 24px;
+    background: transparent;
+    border: none;
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--color-text-dark);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s, color 0.3s;
+    font-family: inherit;
+}
+
+.tab-section .accordion-header:hover {
+    background-color: #e2e8f0;
+}
+
+.tab-section .accordion-header.active {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+}
+
+.tab-section .accordion-icon {
+    font-size: 24px;
+    font-weight: 300;
+    transition: transform 0.3s ease;
+}
+
+/* 활성화 시 + 아이콘이 x 모양으로 회전 */
+.tab-section .accordion-header.active .accordion-icon {
+    transform: rotate(45deg);
+}
+
+.tab-section .accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    background-color: var(--color-white);
+}
+.tab-section .accordion-content p {
+    padding: 20px 24px;
+    margin: 0;
+    font-size: 16px;
+    color: rgb(78, 78, 78);
+    border-top: 1px solid var(--color-border);
+    line-height: 1.6;
+    font-weight: 400;
+}
 
 /* info-section ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ */
 .info-section .info-container{
