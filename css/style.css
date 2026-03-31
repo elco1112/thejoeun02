@@ -1181,9 +1181,10 @@ section{
         grid-template-columns: 1fr;
         padding: 40px 20px;
     }
-    .facility-section .facility-gallery {
+    .facility-section .facility-gallery{
         grid-template-columns: 1fr;
         grid-template-rows: auto;
+        height: auto;
     }
     .facility-section .gallery-item.large {
         grid-column: span 1;
@@ -1215,10 +1216,19 @@ section{
     section {
         padding: 60px 5%; /* 모바일에서는 위아래 여백을 100px에서 60px로 축소 */
     }
+
+    .section-header h2{
+        font-size: 32px;
+    }
+    .section-header p{
+        font-size: 16px;
+    }
     .hero-section .hero-title {
         font-size: 32px;
     }
-    
+    .hero-section .hero-desc{
+        font-size: 16px;
+    }
     /* 2. 네비게이션 및 탭 */
     .top-nav .nav-menu {
         display: none;
@@ -1237,11 +1247,44 @@ section{
         padding: 30px 20px; /* 모바일 탭 내부 여백 축소 */
     }
 
+    /* 커리큘럼 */
+    .tab-section .tab-btn{
+        font-size: 18px;
+        text-align: left;
+        font-weight: 600;
+    }
+    .tab-section .panel-badge{
+        font-size: 16px;
+        font-weight: 500;
+    }
+    .tab-section .tab-panel h3{
+        font-size: 21px;
+    }
+    .tab-section .tab-panel p{
+        font-size: 16px;
+    }
+    .tab-section .accordion-header{
+        font-size: 16px;
+    }
+    .tab-section .accordion-content p{
+        font-size: 14px;
+    }
+    /* 모집개요 */
+    .info-section .detail-list li{
+        font-size: 16px;
+    }
+    .info-section .detail-list li strong{
+        font-size: 18px;
+    }
+    .info-section .info-container{
+        gap: 20px;
+    }
+
     /* 3. 혜택안내 (1줄 꽉차게) */
     .benefits-section .cards-wrap {
         grid-template-columns: 1fr;
     }
-
+    
     /* 4. 타임라인 */
     .timeline-section .timeline-container::before {
         left: 20px;
@@ -1254,13 +1297,35 @@ section{
     .timeline-section .timeline-item {
         padding-left: 60px;
     }
+    .timeline-section .timeline-content h3{
+        font-size: 21px;
+    }
+    .timeline-section .timeline-content p{
+        font-size: 16px;
+        letter-spacing: -1px;
+    }
+
+    /* 시설안내 */
+    .facility-section .gallery-text{
+        font-size: 18px;
+    }
 
     /* 5. 수강생 후기 (카드 너비 축소) */
     .review-section .review-card {
         width: 300px; /* 모바일에서 카드가 짤리지 않게 크기 축소 */
         padding: 25px;
     }
-
+    .review-section .section-header h2{
+        font-size: 32px;
+    }
+    .review-section .section-header p{
+        font-size: 16px;
+    }
+    .review-section .marquee-container::before,
+    .review-section .marquee-container::after{
+        display: none;
+    }
+    
     /* 6. 폼 및 포토스토리 */
     .contact-area .contact-form .form-grid {
         grid-template-columns: 1fr;
@@ -1274,7 +1339,23 @@ section{
     .project-section .nav-btn {
         display: none; 
     }
-
+    .contact-area .contact-header h2{
+        font-size: 32px;
+    }
+    .contact-area .contact-header p{
+        font-size: 16px;
+    }
+    .contact-area input,
+    .contact-area textarea{
+        font-size: 14px;
+        font-family: "Roboto";
+    }
+    .contact-area .btn-submit-large{
+        font-size: 16px;
+    }
+    .contact-area .contact-footer-info{
+        font-size: 16px;
+    }
     /* 7. 퀵 메뉴 스위칭 (PC 날개 숨기고 모바일 하단바 노출) */
     .quick-menu-pc {
         display: none; 
