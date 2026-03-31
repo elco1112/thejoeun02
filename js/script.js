@@ -30,25 +30,67 @@ document.addEventListener('DOMContentLoaded', function(){
         track.innerHTML += cloneHTML;
     }
 
-    // 3. 폼 제출 방지 이벤트
-    const newApplyForm = document.getElementById('newApplyForm');
+    // 3. 상담 폼 제출 (구글 시트 연동)
+    const form = document.getElementById('newApplyForm');
     
-    if (newApplyForm) {
-        newApplyForm.addEventListener('submit', function(e){
+    if (form) {
+        form.addEventListener("submit", async function (e) {
             e.preventDefault();
-            
-            const submitBtn = newApplyForm.querySelector('.btn-submit-large');
+
+            // 스팸봇 방지용 (숨김칸에 값이 들어오면 차단)
+            if (form.website.value) {
+                alert("정상적인 요청이 아닙니다.");
+                return;
+            }
+
+            // 구글 시트로 보낼 데이터 취합
+            const payload = {
+                name: form.name.value.trim(),
+                phone: form.phone.value.trim(),
+                // 희망과목과 문의내용을 하나로 합쳐서 전송
+                message: `[희망과목: ${form.subject.value.trim()}]\n${form.message.value.trim()}`,
+                page: window.location.href
+            };
+
+            if (!payload.name || !payload.phone || !form.message.value.trim()) {
+                alert("이름, 연락처, 문의내용을 모두 입력해주세요.");
+                return;
+            }
+
+            const submitBtn = form.querySelector('.btn-submit-large');
             const originalText = submitBtn.textContent;
             
+            // 전송 중 버튼 상태 변경
             submitBtn.textContent = '예약 정보 전송 중...';
             submitBtn.style.backgroundColor = '#1e40af';
-            
-            setTimeout(function(){
-                alert('무료 방문 상담 예약이 완료되었습니다. 담당자가 확인 후 연락드리겠습니다.');
-                newApplyForm.reset();
+            submitBtn.disabled = true;
+
+            try {
+                const response = await fetch("https://script.google.com/macros/s/AKfycbz9z6CdkklhV7X-1RCa3Bods3oVsMCQ795kuO00DU_n4_-MPKtTcYaq9m_XywDJFeGK/exec", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "text/plain;charset=utf-8"
+                    },
+                    body: JSON.stringify(payload)
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    alert("상담문의가 정상 접수되었습니다. 담당자가 확인 후 연락드리겠습니다.");
+                    form.reset(); // 폼 초기화
+                } else {
+                    alert("저장 실패: " + result.message);
+                }
+            } catch (error) {
+                console.error(error);
+                alert("전송 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.");
+            } finally {
+                // 버튼 상태 원상복구
                 submitBtn.textContent = originalText;
                 submitBtn.style.backgroundColor = '';
-            }, 1200);
+                submitBtn.disabled = false;
+            }
         });
     }
 

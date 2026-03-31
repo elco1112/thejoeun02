@@ -5,14 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>더조은컴퓨터아카데미 - 일산점</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Montserrat:wght@500;700;900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
 
 <header id="topNav" class="top-nav">
     <div class="nav-container">
-        <div class="nav-brand">THEJOEUN</div>
+        <div class="nav-brand"><a href="#">THEJOEUN</a></div>
         <ul class="nav-menu">
             <li><a href="#subjects">커리큘럼</a></li>
             <li><a href="#recruit">모집개요</a></li>
@@ -605,23 +606,25 @@
             </div>
             
             <form id="newApplyForm" class="contact-form">
+                <input type="text" name="website" style="display:none">
+                
                 <div class="form-grid">
                     <div class="input-wrap">
                         <label for="userName" class="sr-only">이름</label>
-                        <input type="text" id="userName" placeholder="이름" required>
+                        <input type="text" id="userName" name="name" placeholder="이름" required>
                     </div>
                     <div class="input-wrap">
                         <label for="userPhone" class="sr-only">연락처</label>
-                        <input type="tel" id="userPhone" placeholder="연락처 (예: 010-1234-5678)" required>
+                        <input type="tel" id="userPhone" name="phone" placeholder="연락처 (예: 010-1234-5678)" required>
                     </div>
                 </div>
                 <div class="input-wrap">
                     <label for="userSubject" class="sr-only">희망과목</label>
-                    <input type="text" id="userSubject" placeholder="희망과목(간략하게 쓰셔도 됩니다)" required>
+                    <input type="text" id="userSubject" name="subject" placeholder="희망과목(간략하게 쓰셔도 됩니다)" required>
                 </div>
                 <div class="input-wrap">
                     <label for="userMessage" class="sr-only">문의내용</label>
-                    <textarea id="userMessage" placeholder="현재 고민거리 등 문의하실 내용을 적어주세요."></textarea>
+                    <textarea id="userMessage" name="message" placeholder="현재 고민거리 등 문의하실 내용을 적어주세요." required></textarea>
                 </div>
                 <button type="submit" class="btn-submit-large">상담 예약 완료하기</button>
             </form>
@@ -644,6 +647,33 @@
         <p class="copyright">© 2026 THEJOEUN Education. All rights reserved.</p>
     </div>
 </footer>
+
+<aside class="quick-menu-pc">
+    <a href="tel:031-902-1777" class="qm-item qm-phone">
+        <span class="qm-icon"><img src="./images/phone-call.png" alt="call"></span>
+        <span class="qm-text">전화상담</span>
+    </a>
+    <a href="javascript:void(0);" class="qm-item qm-kakao">
+        <span class="qm-icon"><img src="./images/kakao.png" alt="talk"></span>
+        <span class="qm-text">카톡상담</span>
+    </a>
+    <a href="#" class="qm-item qm-top">
+        <span class="qm-icon">▲</span>
+        <span class="qm-text">TOP</span>
+    </a>
+</aside>
+
+<nav class="quick-menu-mobile">
+    <a href="tel:031-902-1777" class="qmm-item qmm-phone">
+        <img src="./images/phone-call.png" alt="call"> 전화상담
+    </a>
+    <a href="javascript:void(0);" class="qmm-item qmm-kakao">
+        <img src="./images/kakao.png" alt="talk"> 카톡상담
+    </a>
+    <a href="#" class="qmm-item qmm-top">
+        ▲ TOP
+    </a>
+</nav>
 
 <script src="./js/script.js"></script>
 </body>
