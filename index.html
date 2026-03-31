@@ -13,7 +13,7 @@
 
 <header id="topNav" class="top-nav">
     <div class="nav-container">
-        <div class="nav-brand"><a href="#">THEJOEUN</a></div>
+        <div class="nav-brand"><a href="#"><img src="./images/header-logo.png" alt="logo"></a></div>
         <ul class="nav-menu">
             <li><a href="#subjects">커리큘럼</a></li>
             <li><a href="#recruit">모집개요</a></li>
@@ -27,13 +27,35 @@
 </header>
 
 <section class="hero-section" id="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-content">
-        <h1 class="hero-title">웹퍼블리셔(웹디자인)UI/UX<br>&프론트엔드 양성</h1>
-        <p class="hero-desc">UI/UX를 고려하고 각 매체의 특성을 반영하여 창의적인 디자인을 완성할 수 있도록 디지털 시대에 최적화된 커리큘럼으로 짜여진 국비지원 과정입니다.</p>
-        <div class="hero-actions">
-            <a href="#subjects" class="btn-primary">Explore <span class="arrow">↓</span></a>
+    <div class="hero-slider">
+        <div class="hero-slide active">
+            <div class="hero-bg" style="background-image: url('./images/main-banner03.jpg');"></div>
+            <div class="hero-content">
+                <h1 class="hero-title">웹퍼블리셔(웹디자인)UI/UX<br>&프론트엔드 양성</h1>
+                <p class="hero-desc">UI/UX를 고려하고 각 매체의 특성을 반영하여 창의적인 디자인을 완성할 수 있도록 디지털 시대에 최적화된 커리큘럼으로 짜여진 국비지원 과정입니다.</p>
+                <div class="hero-actions">
+                    <a href="#subjects" class="btn-primary">Explore <span class="arrow">↓</span></a>
+                </div>
+            </div>
         </div>
+
+        <div class="hero-slide">
+            <div class="hero-bg" style="background-image: url('./images/main-banner01.jpg');"></div>
+            <div class="hero-content">
+                <h1 class="hero-title">스마트웹 & 콘텐츠 개발<br>실무 프로젝트 완성</h1>
+                <p class="hero-desc">현업에서 요구하는 최신 트렌드의 기술 스택을 바탕으로 나만의 포트폴리오를 완벽하게 구축하는 실무형 과정입니다.</p>
+                <div class="hero-actions">
+                    <a href="#subjects" class="btn-primary">자세히 보기 <span class="arrow">↓</span></a>
+                </div>
+            </div>
+        </div>
+    
+    <button class="hero-btn hero-prev" aria-label="이전 슬라이드">❮</button>
+    <button class="hero-btn hero-next" aria-label="다음 슬라이드">❯</button>
+    
+    <div class="hero-dots">
+        <span class="dot active" data-index="0"></span>
+        <span class="dot" data-index="1"></span>
     </div>
 </section>
 
@@ -228,47 +250,121 @@
         <h2>모집개요</h2>
         <p>2026년도 정규반 모집 안내</p>
     </div>
-    <div class="info-container">
-        <div class="info-text">
-            <ul class="detail-list">
-                <li><strong>모집 대상:</strong> 취업이 필요한 누구나</li>
-                <li><strong>모집 정원:</strong> 20명 <span>(오프라인 면접 후 선출된 정예 멤버로 구성됩니다.)</span></li>
-                <li><strong>개강 일정:</strong> 1차>2026년 3월 30일 2차>2026년 4월 13일</li>
-                <li><strong>교육 기간:</strong> 5개월 <span>(840시간)</span></li>
-                <li><strong>수강료:</strong> 100% 국비지원</li>
-            </ul>
+    
+    <div class="recruit-dashboard">
+        <div class="recruit-image">
+            <img src="./images/recruit.jpg" alt="모집안내">
+            <div class="img-overlay">
+                <h3>2026 NEW CLASS</h3>
+                <p>웹퍼블리셔 & 프론트엔드 양성과정</p>
+            </div>
         </div>
-        <div class="info-image">
-            <div class="image-placeholder"><img src="./images/recruit.jpg" alt="recruit"></div>
+        
+        <div class="recruit-info-grid">
+            <div class="r-card full-col">
+                <span class="r-label">모집 대상</span>
+                <strong class="r-value">취업이 필요한 누구나</strong>
+            </div>
+
+            <div class="r-card">
+                <span class="r-label">교육 기간</span>
+                <strong class="r-value">5개월 <span class="r-sub">(840시간)</span></strong>
+            </div>
+
+            <div class="r-card">
+                <span class="r-label">모집 정원</span>
+                <strong class="r-value">20명 <span class="r-sub">(정예 선발)</span></strong>
+            </div>
+            
+            <div class="r-card full-col">
+                <span class="r-label">개강 일정</span>
+                <strong class="r-value">1차 &gt; 2026. 03. 30 &nbsp; | &nbsp; 2차 &gt; 2026. 04. 13</strong>
+            </div>
+        
+            <div class="r-card full-col highlight">
+                <span class="r-label">수강료</span>
+                <strong class="r-value">100% 전액 국비지원</strong>
+            </div>
         </div>
     </div>
 </section>
 
+
 <section class="benefits-section" id="benefits">
     <div class="section-header">
-        <h2>국가기간전략산업직종 훈련</h2>
+        <h2>수강생 혜택</h2>
         <p>취업준비생을 위한 국비지원 전액 사업</p>
     </div>
     <div class="cards-wrap">
         <div class="icon-card">
             <div class="card-icon1"><img src="./images/card.png" alt="card"></div>
-            <h3>국비지원 최대 100%</h3>
-            <p>교육훈련비 지원</p>
+            <h3 class="effect">국비지원 최대 100%</h3>
+            <h3>교육훈련비 지원</h3>
+            <!-- <p></p> -->
         </div>
         <div class="icon-card">
             <div class="card-icon2"><img src="./images/sudang.png" alt="sudang"></div>
+            <h3 class="effect">훈련 장려금</h3>
             <h3>월 최대 300,000원</h3>
-            <p>훈련수당금 지원</p>
         </div>
         <div class="icon-card">
             <div class="card-icon3"><img src="./images/success.png" alt="성공"></div>
-            <h3>성공 수당</h3>
-            <p>취업 성공시 성공수당 지급<br>(취업 후 6개월)</p>
+            <h3 class="effect">취업성공 수당</h3>
+            <h3>취업성공 6개월근무 후</h3>
         </div>
         <div class="icon-card">
             <div class="card-icon3"><img src="./images/job.png" alt="job"></div>
-            <h3>국민취업제도 1유형</h3>
-            <p>월 최대 600,000원 지원<br>(최대 6개월)</p>
+            <h3 class="effect">국민취업제도 1유형</h3>
+            <h3>월 최대 600,000원 지원<br>(최대 6개월)</h3>
+        </div>
+    </div>
+</section>
+
+<section class="faq-section" id="faq">
+    <div class="section-header">
+        <h2>자주 묻는 질문 (FAQ)</h2>
+        <p>수강생들이 가장 많이 궁금해하시는 질문들을 모았습니다.</p>
+    </div>
+    
+    <div class="faq-container">
+        <div class="accordion-item">
+            <button class="accordion-header">
+                <span><strong class="faq-q">Q.</strong> 비전공자(노베이스)도 수강할 수 있나요?</span>
+                <span class="accordion-icon">+</span>
+            </button>
+            <div class="accordion-content">
+                <p><strong class="faq-a">A.</strong> 네, 가능합니다. 기초 마크업(HTML/CSS)부터 시작하여 실무 수준의 프로젝트 완성까지 단계별로 진행되므로, 비전공자 및 초보자도 충분히 따라오실 수 있도록 강사진이 밀착 지도합니다.</p>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <button class="accordion-header">
+                <span><strong class="faq-q">Q.</strong> 국비지원 100% 무료가 맞나요?</span>
+                <span class="accordion-icon">+</span>
+            </button>
+            <div class="accordion-content">
+                <p><strong class="faq-a">A.</strong> 네, 맞습니다. 국가기간전략산업직종 훈련으로 '국민내일배움카드'를 발급받으시면 수강료 전액이 100% 지원되며, 출석률에 따라 매월 훈련 장려금(수당)도 추가로 지급받으실 수 있습니다.</p>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <button class="accordion-header">
+                <span><strong class="faq-q">Q.</strong> 수료 후 취업 지원도 해주시나요?</span>
+                <span class="accordion-icon">+</span>
+            </button>
+            <div class="accordion-content">
+                <p><strong class="faq-a">A.</strong> 당연합니다. 학원 내 전문 취업지원 센터를 운영하고 있으며, 1:1 취업 상담, 이력서 및 자기소개서 첨삭, 모의 면접 진행, 우수 기업 채용 연계 등 수강생분들의 성공적인 취업을 적극적으로 지원합니다.</p>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <button class="accordion-header">
+                <span><strong class="faq-q">Q.</strong> 결석이나 지각을 하면 어떻게 되나요?</span>
+                <span class="accordion-icon">+</span>
+            </button>
+            <div class="accordion-content">
+                <p><strong class="faq-a">A.</strong> 국비지원 과정은 전체 교육 시간의 '출석률 80% 이상'을 유지해야 수료가 인정되며 훈련 장려금이 정상 지급됩니다. 불가피한 사정(예비군, 병원 진료 등)이 있을 경우 증빙 서류를 제출하여 공결 처리를 받을 수 있습니다.</p>
+            </div>
         </div>
     </div>
 </section>
@@ -323,11 +419,11 @@
         <p>교육과정 몰입을 위한 시설 안내</p>
     </div>
     <div class="facility-gallery">
-        <div class="gallery-item large"><span class="gallery-text">리프레시 존</span></div>
-        <div class="gallery-item"><span class="gallery-text">강의실 1</span></div>
-        <div class="gallery-item"><span class="gallery-text">강의실 2</span></div>
-        <div class="gallery-item"><span class="gallery-text">강의실 3</span></div>
-        <div class="gallery-item"><span class="gallery-text">휴게실</span></div>
+        <div class="gallery-item01 large"><span class="gallery-text">인포데스크</span></div>
+        <div class="gallery-item02"><span class="gallery-text">리프레시 존</span></div>
+        <div class="gallery-item03"><span class="gallery-text">출입구</span></div>
+        <div class="gallery-item04"><span class="gallery-text">입구</span></div>
+        <div class="gallery-item05"><span class="gallery-text">강의실</span></div>
     </div>
 </section>
 
@@ -630,10 +726,14 @@
             </form>
             
             <div class="contact-footer-info">
-                <div class="info-item">전화 문의: 031-902-1777</div>
-                <div class="info-item">카카오 채널: @apexacademy</div>
-                <div class="info-item">운영 시간: <br>평일 09:00 — 21:00 / 주말 10:00 — 18:00</div>
-                <div class="info-item">위치:<br>경기도 고양시 일산동구 중앙로 000 APEX빌딩 3F</div>
+                <div class="info-item">
+                    <p>전화 문의</p>
+                    <p>031-902-1777</p>
+                </div>
+                <div class="info-item">카카오 채널 <b>일산더조은</b></div>
+                <div class="info-item">운영 시간<br>평일 09:00 — 21:00 / 주말 10:00 — 18:00</div>
+                <div class="info-item">위치<br>경기 고양시 일산동구<br> 중앙로1275번길 38-10 우림로데오스위트 201호
+                </div>
             </div>
         </div>
 
@@ -642,8 +742,8 @@
 
 <footer class="site-footer">
     <div class="footer-inner">
-        <h2>더조은컴퓨터아카데미 일산점</h2>
-        <p>경기도 고양시 일산동구 중앙로 123 APEX빌딩 3F | 상담전화 031-902-1777</p>
+        <div class="footer-logo"><img src="./images/footer-logo.png" alt="footer-logo"></div>
+        <p>경기 고양시 일산동구 중앙로1275번길 38-10 우림로데오스위트 201호</p>
         <p class="copyright">© 2026 THEJOEUN Education. All rights reserved.</p>
     </div>
 </footer>
@@ -653,7 +753,7 @@
         <span class="qm-icon"><img src="./images/phone-call.png" alt="call"></span>
         <span class="qm-text">전화상담</span>
     </a>
-    <a href="javascript:void(0);" class="qm-item qm-kakao">
+    <a href="http://pf.kakao.com/_uEFzxj" class="qm-item qm-kakao">
         <span class="qm-icon"><img src="./images/kakao.png" alt="talk"></span>
         <span class="qm-text">카톡상담</span>
     </a>

@@ -161,4 +161,58 @@ document.addEventListener('DOMContentLoaded', function(){
             }
         });
     });
+
+    // 6. 메인 배너(Hero) 페이드 슬라이드 자동 재생
+    const heroSlides = document.querySelectorAll('.hero-slide');
+    const heroPrev = document.querySelector('.hero-prev');
+    const heroNext = document.querySelector('.hero-next');
+    const heroDots = document.querySelectorAll('.hero-dots .dot');
+    let currentSlide = 0;
+    let heroInterval;
+
+    if (heroSlides.length > 0) {
+        // 슬라이드 화면 전환 함수
+        const showSlide = (index) => {
+            // 모든 활성화 상태 초기화
+            heroSlides.forEach(slide => slide.classList.remove('active'));
+            heroDots.forEach(dot => dot.classList.remove('active'));
+
+            // 인덱스 범위 순환 처리 (처음 <-> 끝)
+            if (index < 0) currentSlide = heroSlides.length - 1;
+            else if (index >= heroSlides.length) currentSlide = 0;
+            else currentSlide = index;
+
+            // 새 슬라이드 활성화
+            heroSlides[currentSlide].classList.add('active');
+            heroDots[currentSlide].classList.add('active');
+        };
+
+        const nextSlide = () => showSlide(currentSlide + 1);
+        const prevSlide = () => showSlide(currentSlide - 1);
+
+        // 버튼 클릭 이벤트
+        if (heroNext) heroNext.addEventListener('click', () => { nextSlide(); resetInterval(); });
+        if (heroPrev) heroPrev.addEventListener('click', () => { prevSlide(); resetInterval(); });
+
+        // 하단 닷(점) 클릭 이벤트
+        heroDots.forEach((dot, idx) => {
+            dot.addEventListener('click', () => {
+                showSlide(idx);
+                resetInterval();
+            });
+        });
+
+        // 3초마다 자동 슬라이드
+        const startInterval = () => {
+            heroInterval = setInterval(nextSlide, 3000); 
+        };
+
+        // 수동으로 눌렀을 때 타이머 초기화 (안 그러면 두 번 연속 넘어가버림)
+        const resetInterval = () => {
+            clearInterval(heroInterval);
+            startInterval();
+        };
+
+        startInterval(); // 최초 실행
+    }
 });
