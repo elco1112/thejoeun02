@@ -25,8 +25,6 @@ document.addEventListener('DOMContentLoaded', function(){
     if(track){
         // 원본 12개의 리뷰 HTML 요소를 통째로 문자열로 가져옵니다.
         const cloneHTML = track.innerHTML;
-        // 기존 12개 뒤에 동일한 12개를 이어 붙여 총 24개로 만듭니다.
-        // CSS에서 translateX(-50%)를 적용하면, 정확히 앞의 12개 분량만큼만 이동하고 0%로 리셋되므로 무한히 도는 것처럼 보입니다.
         track.innerHTML += cloneHTML;
     }
 
@@ -94,57 +92,55 @@ document.addEventListener('DOMContentLoaded', function(){
         });
     }
 
-    // 4. 프로젝트 섹션 좌우 화살표 슬라이드 (무한 루프)
-    const projectContainer = document.querySelector('.project-container');
-    const prevBtn = document.querySelector('.prev-btn');
-    const nextBtn = document.querySelector('.next-btn');
+    // 4. 포토스토리 & 프로젝트 섹션 좌우 화살표 슬라이드 통합 처리
+    function initSlider(containerSelector, wrapperSelector) {
+        const container = document.querySelector(containerSelector);
+        const prevBtn = document.querySelector(`${wrapperSelector} .prev-btn`);
+        const nextBtn = document.querySelector(`${wrapperSelector} .next-btn`);
 
-    if (projectContainer && prevBtn && nextBtn) {
-        // 카드 1개 너비 + 여백(gap) 구하기
-        const getScrollAmount = () => {
-            const card = projectContainer.querySelector('.project-card');
-            return card.offsetWidth + 24; 
-        };
+        if (container && prevBtn && nextBtn) {
+            const getScrollAmount = () => {
+                const card = container.children[0];
+                return card.offsetWidth + 24; // gap 24px
+            };
 
-        // 오른쪽(다음) 버튼 클릭
-        nextBtn.addEventListener('click', () => {
-            const scrollAmount = getScrollAmount();
-            const maxScrollLeft = projectContainer.scrollWidth - projectContainer.clientWidth;
-            
-            // 현재 맨 오른쪽 끝에 도달했는지 확인 (오차 범위 10px 허용)
-            if (projectContainer.scrollLeft >= maxScrollLeft - 10) {
-                // 맨 끝이면 처음(1번)으로 슉! 돌아감
-                projectContainer.scrollTo({ left: 0, behavior: 'smooth' });
-            } else {
-                projectContainer.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-            }
-        });
+            nextBtn.addEventListener('click', () => {
+                const scrollAmount = getScrollAmount();
+                const maxScrollLeft = container.scrollWidth - container.clientWidth;
+                
+                if (container.scrollLeft >= maxScrollLeft - 10) {
+                    container.scrollTo({ left: 0, behavior: 'smooth' });
+                } else {
+                    container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+                }
+            });
 
-        // 왼쪽(이전) 버튼 클릭
-        prevBtn.addEventListener('click', () => {
-            const scrollAmount = getScrollAmount();
-            const maxScrollLeft = projectContainer.scrollWidth - projectContainer.clientWidth;
-            
-            // 현재 맨 앞(1번)에 있는지 확인
-            if (projectContainer.scrollLeft <= 10) {
-                // 맨 앞이면 끝(9번)으로 슉! 이동
-                projectContainer.scrollTo({ left: maxScrollLeft, behavior: 'smooth' });
-            } else {
-                projectContainer.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-            }
-        });
+            prevBtn.addEventListener('click', () => {
+                const scrollAmount = getScrollAmount();
+                const maxScrollLeft = container.scrollWidth - container.clientWidth;
+                
+                if (container.scrollLeft <= 10) {
+                    container.scrollTo({ left: maxScrollLeft, behavior: 'smooth' });
+                } else {
+                    container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+                }
+            });
+        }
     }
+
+    // 함수 호출 (포토스토리, 프로젝트 각각 적용)
+    initSlider('.photostory-container', '.photostory-wrapper');
+    initSlider('.project-container', '.project-wrapper');
 
     // 5. 커리큘럼 아코디언 기능 (다른 항목 자동 닫힘 적용)
     const accordionHeaders = document.querySelectorAll('.accordion-header');
 
     accordionHeaders.forEach(header => {
         header.addEventListener('click', function() {
-            // 1. 내가 클릭한 요소가 아닌, 이미 열려있는 다른 아코디언들을 모두 찾아 닫기
             accordionHeaders.forEach(otherHeader => {
                 if (otherHeader !== this && otherHeader.classList.contains('active')) {
-                    otherHeader.classList.remove('active'); // active 클래스 제거 (아이콘 원상복구)
-                    otherHeader.nextElementSibling.style.maxHeight = null; // 높이를 0으로 만들어 닫기
+                    otherHeader.classList.remove('active');
+                    otherHeader.nextElementSibling.style.maxHeight = null;
                 }
             });
 
@@ -171,9 +167,7 @@ document.addEventListener('DOMContentLoaded', function(){
     let heroInterval;
 
     if (heroSlides.length > 0) {
-        // 슬라이드 화면 전환 함수
         const showSlide = (index) => {
-            // 모든 활성화 상태 초기화
             heroSlides.forEach(slide => slide.classList.remove('active'));
             heroDots.forEach(dot => dot.classList.remove('active'));
 

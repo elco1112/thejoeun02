@@ -107,7 +107,7 @@ ul{
     max-width: none;
     padding: 0;
     overflow: hidden;
-    background-color: #000; /* 이미지가 로딩되기 전 검은색 배경 노출 */
+    background-color: #000;
 }
 
 .hero-slider {
@@ -132,7 +132,6 @@ ul{
     z-index: 0;
 }
 
-/* 활성화된 슬라이드만 화면에 보임 */
 .hero-slide.active {
     opacity: 1;
     visibility: visible;
@@ -148,7 +147,6 @@ ul{
     background-size: cover;
     background-position: center;
     z-index: -2;
-    /* 서서히 줌인되는 고급스러운 효과 */
     transform: scale(1.1);
     transition: transform 6s ease-out; 
 }
@@ -170,12 +168,9 @@ ul{
 } */
 
 .hero-content {
-    max-width: 750px;
-    margin: 0 auto;
     padding: 0 5%;
     position: relative;
     z-index: 2;
-    /* 글씨가 아래에서 위로 스르륵 올라오는 효과 */
     transform: translateY(30px);
     opacity: 0;
     transition: transform 0.8s ease 0.3s, opacity 0.8s ease 0.3s;
@@ -187,6 +182,7 @@ ul{
 }
 
 .hero-title {
+    overflow-wrap: break-word;
     font-size: 52px;
     font-weight: 700;
     line-height: 1.3;
@@ -195,6 +191,8 @@ ul{
 }
 
 .hero-desc {
+    max-width: 700px;
+    margin: 0 auto;
     font-size: 20px;
     color: #e2e8f0;
     margin-bottom: 40px;
@@ -218,7 +216,6 @@ ul{
     font-size: 18px;
     text-transform: uppercase;
     transition: background-color 0.3s;
-    border-radius: 8px;
 }
 
 .btn-primary:hover {
@@ -449,7 +446,6 @@ section{
     display: flex;
     background-color: var(--color-white);
     border: 1px solid var(--color-border);
-    border-radius: 20px;
     box-shadow: var(--shadow-md);
     overflow: hidden;
     max-width: 1100px;
@@ -516,13 +512,13 @@ section{
 
 /* 강조되는 수강료 카드 스타일 */
 .info-section .highlight {
-    background-color: #eff6ff; /* 아주 연한 파란색 배경 */
+    background-color: #eff6ff;
     border-color: #bfdbfe;
 }
 
 .info-section .highlight .r-label,
 .info-section .highlight .r-value {
-    color: var(--color-primary); /* 브랜드 컬러(파란색)로 글씨 강조 */
+    color: var(--color-primary);
 }
 
 .info-section .r-label {
@@ -594,9 +590,7 @@ section{
     color: var(--color-text-gray);
 } */
 
-/* =========================================
-   FAQ Section (자주 묻는 질문)
-========================================= */
+/* FAQ section ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ */
 .faq-section .faq-container {
     max-width: 800px; /* 읽기 편하도록 넓이를 살짝 제한 */
     margin: 0 auto;
@@ -607,7 +601,6 @@ section{
 
 .faq-section .accordion-item {
     border: 1px solid var(--color-border);
-    border-radius: 12px;
     overflow: hidden;
     background-color: var(--color-white);
     box-shadow: var(--shadow-sm);
@@ -624,8 +617,8 @@ section{
     padding: 24px 30px;
     background: transparent;
     border: none;
-    font-size: 18px;
-    font-weight: 600;
+    font-size: 21px;
+    font-weight: 500;
     color: var(--color-text-dark);
     cursor: pointer;
     display: flex;
@@ -644,7 +637,7 @@ section{
 /* Q 글자 강조 */
 .faq-section .faq-q {
     color: var(--color-primary);
-    font-size: 20px;
+    font-size: 24px;
     margin-right: 8px;
 }
 
@@ -655,7 +648,7 @@ section{
 /* 우측 + 아이콘 회전 효과 */
 .faq-section .accordion-icon {
     font-size: 24px;
-    font-weight: 300;
+    font-weight: 500;
     transition: transform 0.3s ease;
 }
 
@@ -674,7 +667,7 @@ section{
 .faq-section .accordion-content p {
     padding: 24px 30px;
     margin: 0;
-    font-size: 16px;
+    font-size: 18px;
     color: var(--color-text-dark);
     border-top: 1px solid var(--color-border);
     line-height: 1.6;
@@ -683,7 +676,7 @@ section{
 /* A 글자 강조 (빨간색 계열로 눈에 띄게) */
 .faq-section .faq-a {
     color: #ef4444; 
-    font-size: 20px;
+    font-size: 24px;
     margin-right: 8px;
 }
 
@@ -716,6 +709,7 @@ section{
 
 .timeline-section .timeline-dot{
     position: absolute;
+
     left: 0;
     top: 0;
     width: 50px;
@@ -802,14 +796,31 @@ section{
     font-size: 21px;
     z-index: 1;
 }
+
 /* photostory-section ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ */
+.photostory-section .photostory-wrapper {
+    position: relative;
+    max-width: 100%;
+}
+
 .photostory-section .photostory-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    display: flex;
     gap: 24px;
+    overflow-x: auto;
+    padding-bottom: 30px; 
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth; 
+    scrollbar-width: none; 
+    -ms-overflow-style: none; 
+}
+
+.photostory-section .photostory-container::-webkit-scrollbar {
+    display: none; 
 }
 
 .photostory-section .photo-card {
+    flex: 0 0 calc(33.333% - 16px);
+    scroll-snap-align: start; 
     background-color: var(--color-white);
     border: 1px solid var(--color-border);
     box-shadow: var(--shadow-sm);
@@ -841,6 +852,12 @@ section{
     transform: scale(1.05); 
 }
 
+.photostory-section .photo-img video{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
 .photostory-section .photo-content {
     padding: 30px;
     display: flex;
@@ -856,11 +873,13 @@ section{
     color: var(--color-text-gray);
     font-weight: 500;
 }
-.photostory-section .photo-text.hashtag{
+
+.photostory-section .photo-text.hashtag {
     color: var(--color-primary);
     font-weight: 500;
     font-size: 16px;
 }
+
 .photostory-section .photo-text {
     font-size: 15px;
     color: var(--color-text-dark);
@@ -868,6 +887,36 @@ section{
     word-break: keep-all;
     font-size: 16px;
 }
+
+/* 포토스토리 좌우 버튼 스타일 */
+.photostory-section .nav-btn {
+    position: absolute;
+    top: calc(50% - 15px);
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    background-color: var(--color-primary);
+    border: 1px solid var(--color-border);
+    border-radius: 50%;
+    box-shadow: var(--shadow-md);
+    font-size: 24px;
+    color: var(--color-white);
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s;
+}
+
+.photostory-section .nav-btn:hover {
+    background-color: var(--color-white);
+    color: var(--color-primary);
+}
+
+.photostory-section .prev-btn { left: -65px; }
+.photostory-section .next-btn { right: -65px; }
+
 
 /* project-section ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ */
 .project-section .project-wrapper {
@@ -912,7 +961,7 @@ section{
 
 .project-section .project-img {
     width: 100%;
-    height: 220px; 
+    height: 200px; 
     overflow: hidden;
     border-bottom: 1px solid var(--color-border);
 }
@@ -920,7 +969,7 @@ section{
 .project-section .project-img img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     transition: transform 0.5s ease;
 }
 
@@ -1071,15 +1120,24 @@ section{
     font-size: 18px;
     margin-bottom: 16px;
     text-align: right;
+    margin-top: auto;
+}
+.review-section .review-card h4{
+    margin-bottom: 10px;
 }
 
-.review-section .review-card p{
+.review-section .review-card p {
     font-size: 16px;
     line-height: 1.6;
     font-weight: 300;
     color: var(--color-text-dark);
     margin-bottom: 20px;
-    flex-grow: 1;
+    
+    /* 👇 이 4줄이 무조건 한 세트로 묶여야 작동합니다! */
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* 원하는 최대 줄 수 지정 (예: 3줄) */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 .review-section .review-author{
@@ -1102,11 +1160,11 @@ section{
 /* contact-area section ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ */
 .contact-area .contact-wrapper {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* 5:5 비율 좌우 배치 */
-    gap: 40px; /* 지도와 폼 박스 사이 간격 */
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
     max-width: 1440px;
     margin: 0 auto;
-    align-items: stretch; /* 양쪽 박스 높이를 동일하게 맞춤 */
+    align-items: stretch;
 }
 
 /* 좌측 지도 스타일 */
@@ -1133,7 +1191,7 @@ section{
     height: 100% !important;
 }
 
-/* 우측 폼 박스 스타일 (기존 디자인 복구 및 유지) */
+/* 우측 폼 박스 스타일 */
 .contact-area .contact-box {
     background-color: var(--color-white);
     border: 1px solid var(--color-border);
@@ -1141,7 +1199,7 @@ section{
     box-shadow: var(--shadow-md);
     display: flex;
     flex-direction: column;
-    justify-content: center; /* 내부 요소 세로 중앙 정렬 */
+    justify-content: center;
 }
 
 .contact-area .contact-header {
@@ -1205,7 +1263,6 @@ section{
     cursor: pointer;
     margin-top: 10px;
     transition: background-color 0.3s;
-    border-radius: 8px;
 }
 
 .contact-area .btn-submit-large:hover {
@@ -1216,37 +1273,128 @@ section{
     margin-top: 30px;
     padding-top: 30px;
     border-top: 1px solid var(--color-border);
+}
+
+.contact-area .info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px 20px;
+}
+
+.contact-area .info-item {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 8px;
+    text-align: left;
+}
+
+.contact-area .info-item.full-width {
+    grid-column: span 2;
+}
+
+.contact-area .info-label {
     font-size: 16px;
     color: var(--color-text-gray);
     font-weight: 500;
-    text-align: center;
+}
+
+.contact-area .info-value {
+    font-size: 18px;
+    color: var(--color-text-dark);
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+.contact-area .info-value.tel {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--color-primary);
 }
 
 /* footer ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ */
-.site-footer{
+.site-footer {
     background-color: var(--color-text-dark);
-    color: var(--color-white);
-    text-align: center;
-    padding: 60px 20px;
-}
-
-
-.site-footer p{
-    font-size: 14px;
     color: #94a3b8;
-    margin-bottom: 8px;
+    padding: 60px 5%;
+    border-top: 1px solid #1e293b;
 }
 
-.site-footer .copyright{
-    margin-top: 20px;
+.site-footer .footer-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.site-footer .footer-top {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+}
+
+.site-footer .footer-links {
+    display: flex;
+    gap: 24px;
+}
+
+.site-footer .footer-links a {
+    font-size: 15px;
+    color: #cbd5e1;
+    transition: color 0.3s;
+}
+
+.site-footer .footer-links a:hover {
+    color: var(--color-white);
+}
+
+.site-footer .footer-main {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.site-footer .footer-logo img {
+    opacity: 0.8;
+}
+.site-footer .footer-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.site-footer .footer-info p {
+    font-size: 15px;
+    line-height: 1.6;
+    margin: 0;
+    word-break: keep-all;
+}
+
+.site-footer .footer-info strong {
+    font-weight: 500;
+    color: #cbd5e1;
+}
+
+.site-footer .info-list span {
+    display: inline-block;
+    position: relative;
+    margin-right: 16px;
+}
+
+.site-footer .info-list span:not(:last-child)::after {
+    content: '|';
+    position: absolute;
+    right: -10px;
+    color: #475569;
     font-size: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.site-footer .copyright {
+    margin-top: 40px;
+    font-size: 14px;
     color: #64748b;
 }
 
-/* 반응형 */
+/* 지도반응형 */
 @media (max-width: 1250px) {
     .project-section .prev-btn { left: 10px; }
     .project-section .next-btn { right: 10px; }
@@ -1271,14 +1419,11 @@ section{
     .facility-section .gallery-item{
         height: 200px;
     }
-    .photostory-section .photostory-container {
-        grid-template-columns: repeat(2, 1fr);
-    }
     .project-section .project-card {
         flex: 0 0 calc(50% - 12px); 
     }
     .contact-area .contact-wrapper {
-        grid-template-columns: 1fr; /* 위:지도, 아래:폼으로 떨어지게 함 */
+        grid-template-columns: 1fr;
         gap: 40px;
     }
     .contact-area .map-container {
@@ -1290,26 +1435,25 @@ section{
 }
 
 /* 퀵 메뉴 */
-/* 퀵 메뉴 */
 .quick-menu-pc {
     position: fixed;
-    right: 25px; /* 화면 끝에서 살짝 띄워서 여백을 줌 */
-    bottom: 50px; /* 아래쪽에 배치 */
+    right: 25px;
+    bottom: 50px;
     z-index: 999;
     display: flex;
     flex-direction: column;
-    gap: 16px; /* 버튼 사이 시원한 간격 */
+    gap: 16px;
 }
 
 .quick-menu-pc .qm-item {
     display: flex;
     align-items: center;
-    width: 145px; /* 글자가 처음부터 다 보이도록 고정 너비 */
+    width: 145px;
     height: 56px;
     background-color: var(--color-white);
     color: var(--color-text-dark);
-    border-radius: 30px; /* 완전한 둥근 캡슐 모양 */
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1); /* 그림자로 띄워진 느낌 강화 */
+    border-radius: 30px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
     border: 1px solid var(--color-border);
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s;
 }
@@ -1326,7 +1470,7 @@ section{
     background-color: #FEE500;
     border-color: #FEE500;
     color: #3c1e1e;
-    animation: float-animation 2.5s ease-in-out infinite; /* 시선을 끄는 둥실둥실 효과 */
+    animation: float-animation 2.5s ease-in-out infinite;
 }
 
 /* 마우스 올렸을 때 살짝 커지면서 튀어나오는 효과 */
@@ -1361,7 +1505,7 @@ section{
 .quick-menu-pc .qm-top {
     width: 56px; 
     border-radius: 50%;
-    align-self: flex-end; /* 우측에 정렬 */
+    align-self: flex-end;
     justify-content: center;
     background-color: var(--color-text-dark);
     color: var(--color-white);
@@ -1376,10 +1520,9 @@ section{
 }
 
 .quick-menu-pc .qm-top .qm-text {
-    display: none; /* TOP 글씨는 숨기고 위화살표만 노출 */
+    display: none;
 }
 
-/* --- 2. 모바일 버전 (하단 고정바) --- */
 .quick-menu-mobile {
     position: fixed;
     bottom: 0;
@@ -1418,12 +1561,10 @@ section{
 .quick-menu-mobile .qmm-top { background-color: var(--color-text-dark); flex: 0.4;}
 
 
-/* =========================================
-   📱 반응형 미디어 쿼리 (통합)
-========================================= */
+/* 반응형 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ */
 @media (max-width: 1250px) {
-    .project-section .prev-btn { left: 10px; }
-    .project-section .next-btn { right: 10px; }
+    .project-section .prev-btn, .photostory-section .prev-btn { left: 10px; }
+    .project-section .next-btn, .photostory-section .next-btn { right: 10px; }
 }
 
 @media (max-width: 1024px){
@@ -1431,7 +1572,7 @@ section{
         grid-template-columns: repeat(2, 1fr);
     }
     .info-section .recruit-dashboard {
-        flex-direction: column; /* 태블릿에서는 위아래로 떨어지게 */
+        flex-direction: column;
     }
     .info-section .recruit-image {
         min-height: 250px;
@@ -1451,10 +1592,7 @@ section{
     .facility-section .gallery-item {
         height: 200px;
     }
-    .photostory-section .photostory-container {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    .project-section .project-card {
+    .photostory-section .photo-card {
         flex: 0 0 calc(50% - 12px); 
     }
     .contact-area .contact-wrapper {
@@ -1472,7 +1610,7 @@ section{
 @media (max-width: 768px){
     /* 1. 기본 레이아웃 및 텍스트 여백 축소 */
     section {
-        padding: 60px 5%; /* 모바일에서는 위아래 여백을 100px에서 60px로 축소 */
+        padding: 60px 5%;
     }
 
     .section-header h2{
@@ -1486,6 +1624,9 @@ section{
     }
     .hero-section .hero-desc{
         font-size: 16px;
+    }
+    .hero-btn{
+        display: none;
     }
     /* 2. 네비게이션 및 탭 */
     .top-nav .nav-menu {
@@ -1502,7 +1643,7 @@ section{
         border-left: 3px solid var(--color-primary);
     }
     .tab-section .tab-content-area {
-        padding: 30px 20px; /* 모바일 탭 내부 여백 축소 */
+        padding: 30px 20px;
     }
 
     /* 커리큘럼 */
@@ -1529,14 +1670,14 @@ section{
     }
     /* 모집개요 */
     .info-section .recruit-info-grid {
-        grid-template-columns: 1fr; /* 모바일에서는 카드가 전부 1줄로 */
+        grid-template-columns: 1fr;
         padding: 20px;
     }
     .info-section .full-col {
         grid-column: span 1;
     }
     .info-section .r-value {
-        font-size: 18px; /* 모바일 글자 크기 축소 */
+        font-size: 18px;
     }
 
     /* 3. 혜택안내 (1줄 꽉차게) */
@@ -1581,7 +1722,7 @@ section{
 
     /* 5. 수강생 후기 (카드 너비 축소) */
     .review-section .review-card {
-        width: 300px; /* 모바일에서 카드가 짤리지 않게 크기 축소 */
+        width: 300px;
         padding: 25px;
     }
     .review-section .section-header h2{
@@ -1599,8 +1740,11 @@ section{
     .contact-area .contact-form .form-grid {
         grid-template-columns: 1fr;
     }
-    .photostory-section .photostory-container {
-        grid-template-columns: 1fr;
+    .photostory-section .photo-card {
+        flex: 0 0 85%; 
+    }
+    .photostory-section .nav-btn {
+        display: none; 
     }
     .project-section .project-card {
         flex: 0 0 85%; 
@@ -1625,6 +1769,16 @@ section{
     .contact-area .contact-footer-info{
         font-size: 16px;
     }
+    .contact-area .info-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    .contact-area .info-item.full-width {
+        grid-column: span 1;
+    }
+    .contact-area .info-item span{
+        font-size: 15px;
+    }
     /* 7. 퀵 메뉴 스위칭 (PC 날개 숨기고 모바일 하단바 노출) */
     .quick-menu-pc {
         display: none; 
@@ -1633,6 +1787,15 @@ section{
         display: flex; 
     }
     body {
-        padding-bottom: 60px; /* 하단바 높이만큼 밑창 띄우기 */
+        padding-bottom: 60px;
+    }
+    /* 풋터 */
+    .site-footer .info-list span {
+        display: block;
+        margin-right: 0;
+        margin-bottom: 4px;
+    }
+    .site-footer .info-list span::after {
+        display: none;
     }
 }
