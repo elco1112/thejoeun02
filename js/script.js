@@ -1,3 +1,9 @@
+// - HTML 클래스명 변경 시 기능 작동 안함
+// - active 클래스는 상태 제어용 (삭제 금지)
+// - 기능은 클래스명을 기준으로 동작함
+// - HTML 구조 변경 시 JS 수정 필요
+// - 반복 구조(카드)는 자동으로 적용됨
+
 document.addEventListener('DOMContentLoaded', function(){
     
     // 1. 탭 메뉴 기능 
@@ -9,11 +15,14 @@ document.addEventListener('DOMContentLoaded', function(){
             tabButtons.forEach(function(btn){
                 btn.classList.remove('active');
             });
+            // 모든 콘텐츠 숨김
             tabPanels.forEach(function(panel){
                 panel.classList.remove('active');
             });
-
+            // 현재 클릭한 버튼 활성화
             this.classList.add('active');
+
+            // 연결된 콘텐츠 표시
             const targetId = this.getAttribute('data-target');
             document.getElementById(targetId).classList.add('active');
         });
@@ -99,27 +108,32 @@ document.addEventListener('DOMContentLoaded', function(){
         const nextBtn = document.querySelector(`${wrapperSelector} .next-btn`);
 
         if (container && prevBtn && nextBtn) {
+            // 카드 한 개 기준 이동 거리 계산
             const getScrollAmount = () => {
                 const card = container.children[0];
                 return card.offsetWidth + 24; // gap 24px
             };
 
+            // 다음 버튼
             nextBtn.addEventListener('click', () => {
                 const scrollAmount = getScrollAmount();
                 const maxScrollLeft = container.scrollWidth - container.clientWidth;
                 
                 if (container.scrollLeft >= maxScrollLeft - 10) {
+                    // 끝이면 처음으로
                     container.scrollTo({ left: 0, behavior: 'smooth' });
                 } else {
                     container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
                 }
             });
 
+            // 이전 버튼
             prevBtn.addEventListener('click', () => {
                 const scrollAmount = getScrollAmount();
                 const maxScrollLeft = container.scrollWidth - container.clientWidth;
                 
                 if (container.scrollLeft <= 10) {
+                    // 처음이면 끝으로
                     container.scrollTo({ left: maxScrollLeft, behavior: 'smooth' });
                 } else {
                     container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
@@ -128,7 +142,7 @@ document.addEventListener('DOMContentLoaded', function(){
         }
     }
 
-    // 함수 호출 (포토스토리, 프로젝트 각각 적용)
+    // 함수 호출 (포토스토리, 프로젝트 각각 적용) +슬라이드 초기화
     initSlider('.photostory-container', '.photostory-wrapper');
     initSlider('.project-container', '.project-wrapper');
 
@@ -137,6 +151,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
     accordionHeaders.forEach(header => {
         header.addEventListener('click', function() {
+            // 다른 열린 항목 닫기
             accordionHeaders.forEach(otherHeader => {
                 if (otherHeader !== this && otherHeader.classList.contains('active')) {
                     otherHeader.classList.remove('active');
@@ -158,7 +173,7 @@ document.addEventListener('DOMContentLoaded', function(){
         });
     });
 
-    // 6. 메인 배너(Hero) 페이드 슬라이드 자동 재생
+    // 6. 메인 배너(Hero) 페이드 슬라이드 자동 재생 active 클래스로 상태 관리
     const heroSlides = document.querySelectorAll('.hero-slide');
     const heroPrev = document.querySelector('.hero-prev');
     const heroNext = document.querySelector('.hero-next');
@@ -168,6 +183,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
     if (heroSlides.length > 0) {
         const showSlide = (index) => {
+            // 초기화
             heroSlides.forEach(slide => slide.classList.remove('active'));
             heroDots.forEach(dot => dot.classList.remove('active'));
 

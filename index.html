@@ -14,8 +14,12 @@
 <!-- 로고 및 메뉴 섹션 -->
 <header id="topNav" class="top-nav">
     <div class="nav-container">
-        <div class="nav-brand"><a href="#"><img src="./images/header-logo.png" alt="logo"></a></div>
+        <!-- 로고 이미지 (경로만 바꾸면 됨) -->
+        <div class="nav-brand">
+            <a href="#"><img src="./images/header-logo.png" alt="logo"></a>
+        </div>
         <!-- #subjects = <section class=... id="subjects"> 로 이동해라 라는 뜻 -->
+        <!-- 메뉴리스트 -> 텍스트는 수정 가능, href는 해당 section id랑 연결됨 -->
         <ul class="nav-menu">
             <li><a href="#subjects">커리큘럼</a></li>
             <li><a href="#recruit">모집개요</a></li>
@@ -24,6 +28,7 @@
             <li><a href="#photostory">포토스토리</a></li>
             <li><a href="#reviews">수강생후기</a></li>
         </ul>
+        <!-- 상담 신청 버튼 -->
         <a href="#contact" class="nav-cta">상담신청</a>
     </div>
 </header>
@@ -35,12 +40,17 @@
     <div class="hero-slider">
         <!-- 디지털 디자인 이미지 배너 -->
         <div class="hero-slide active">
+
+            <!-- 배경 이미지(여기 URL만 교체하면 됨) -->
             <div class="hero-bg" style="background-image: url('./images/main-banner03.jpg');"></div>
-            <div class="hero-content">                
+            <div class="hero-content">
+                <!-- 제목                 -->
                 <h1 class="hero-title">[디지털디자인]<br>UI/UX 웹디자인&웹퍼블리셔 양성(Figma)</h1>
+                <!-- 설명 텍스트 -->
                 <p class="hero-desc">
                     UI/UX를 고려하고 각 매체의 특성을 반영하여 창의적인 디자인을 완성할 수 있도록 디지털 시대에 최적화된 커리큘럼으로 짜여진 국비지원 과정입니다.                    
-                </p>                
+                </p>   
+                <!-- 버튼 -->
                 <div class="hero-actions">
                     <a href="#subjects" class="btn-primary">Explore <span class="arrow">↓</span></a>
                 </div>
@@ -48,7 +58,9 @@
         </div>
 
         <!-- 스마트웹 & 콘텐츠 개발 이미지 배너  -->
-        <div class="hero-slide">            
+        <!-- 슬라이드 ★복사해서 슬라이드 추가 가능★ -->
+        <div class="hero-slide">
+            <!-- 배경이미지 -->
             <div class="hero-bg" style="background-image: url('./images/main-banner01.jpg');"></div>
             <div class="hero-content">
                 <h1 class="hero-title">(스마트웹&콘텐츠 개발)<br>웹퍼블리셔(웹디자인)<br>&프론트엔드 개발</h1>
@@ -61,6 +73,7 @@
             </div>
         </div>
     
+    <!-- 좌우 이동버튼 -> JS에서 제어되니 건들지 않는게 좋음 -->
     <button class="hero-btn hero-prev" aria-label="이전 슬라이드">❮</button>
     <button class="hero-btn hero-next" aria-label="다음 슬라이드">❯</button>
 
@@ -74,6 +87,7 @@
 
 <!-- 커리큘럼-------------------------------------- -->
 <section class="tab-section" id="subjects">
+    <!-- 섹션제목 (텍스트 수정가능) -->
     <div class="section-header">
         <h2>커리큘럼</h2>
         <p>취업성공과 핵심인재를 만드는 압도적 커리큘럼</p>
@@ -81,32 +95,46 @@
     
     <div class="tab-container">
         <div class="tab-buttons">
-
             <!-- 과정명 개수만큼 button태그를 추가하세요 -->
+            <!-- data-target과 id 반드시 맞춰야 함 -->
             <button class="tab-btn active" data-target="tab1">[디지털디자인] UI/UX 웹디자인&웹퍼블리셔 양성(Figma)</button>
             <button class="tab-btn" data-target="tab2">(스마트웹&콘텐츠 개발) 웹퍼블리셔(웹디자인)&프론트엔드 개발과정</button>
         </div>
         
+        <!-- 탭 내용 영역 -->
         <div class="tab-content-area">
-
             <!-- 첫번째 과정의 해당하는 설명 내용 부분 -->
+            <!-- id="tab1" → 버튼 data-target="tab1"과 연결 -->
             <div class="tab-panel active" id="tab1">
+                <!-- 뱃지 텍스트 -->
                 <div class="panel-badge">SUBJECT 01</div>
+
+                <!-- 과정제목 -->
                 <h3>[디지털디자인] UI/UX 웹디자인&웹퍼블리셔 양성(Figma)</h3>
+
+                <!-- 설명 -->
                 <p>- 사용자 경험(UX) 분석을 기반으로 서비스 컨텐츠의 정보구조, UI 설계, 화면설계 등 기획 및 디자인 역량을 함양</p>
                 <p>- 다양한 디지털 환경과 디바이스에 대응 가능한 컨텐츠를 반응형 웹으로 설계·디자인할 수 있는 실무 능력을 습득</p>
                 <p>- 웹표준 기반의 HTML, CSS, JavaScript 등 웹 구현 기술을 활용하여 웹디자인과 퍼블리싱 전 과정을 수행</p>
                 
+                <!-- 아코디언 영역 (펼짐/닫힘) -->
                 <div class="accordion-container">
+                    <!-- 복사해서 STEP 추가 가능 -->
                     <div class="accordion-item">
+                        <!-- 클릭영역 (제목) -->
                         <button class="accordion-header">
                             <span><b>STEP 01.</b> 디자인 구성요소 설계·제작·응용</span>
+
+                            <!-- + 아이콘 (JS에서 회전됨) -->
                             <span class="accordion-icon">+</span>
                         </button>
+
+                        <!-- 내용역역 (자동 높이 계산됨 / JS제어) -->
                         <div class="accordion-content">
                             <p>·스토리보드 설계·제작·응용 → 심미성 구성요소 설계·제작·응용 → 사용성 구성요소 설계·제작·응용 → 매체성 구성요소 설계·제작·응용</p>
                         </div>
                     </div>
+
                     <div class="accordion-item">
                         <button class="accordion-header">
                             <span><b>STEP 02.</b> 서비스·경험디자인 관찰조사 및 시나리오 개발</span>
@@ -174,9 +202,20 @@
                             <p>·Javascript&jQuery → 피그마 기초 및 활용 → 반응형 웹페이지 제작</p>
                             </div>
                     </div>
+
+                    <!-- ★★★STAP 추가 할 때 아래 내용 추가해서 사용★★★ -->
+                    <!-- 208부터 216까지 주석 풀어서 사용 -->
+                    <!-- <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span><b>STEP 08.</b> 웹디자인 및 퍼블리싱 실무</span>
+                            <span class="accordion-icon">+</span>
+                        </button>
+                        <div class="accordion-content">
+                            <p>·Javascript&jQuery → 피그마 기초 및 활용 → 반응형 웹페이지 제작</p>
+                            </div>
+                    </div> -->
                 </div>
             </div>
-
 
             <!-- 두번째 과정의 해당하는 설명 내용 부분 -->
             <div class="tab-panel" id="tab2">
@@ -266,14 +305,16 @@
 </section>
 
 
-<!-- 모집 개요---------------------------- -->
+<!-- 모집 개요섹션 (이미지 + 정보 카드 수정 가능) -->
 <section class="info-section" id="recruit">
     <div class="section-header">
+        <!-- 제목영역 -->
         <h2>모집개요</h2>
         <p>2026년도 정규반 모집 안내</p>
     </div>
     
     <div class="recruit-dashboard">
+        <!-- 왼쪽 이미지 -> 이미지 교체만 하면 됨 -->
         <div class="recruit-image">
             <img src="./images/recruit.jpg" alt="모집안내">
             <div class="img-overlay">
@@ -282,21 +323,29 @@
             </div>
         </div>
         
+        <!-- 오른쪽 정보 카드 -->
         <div class="recruit-info-grid">
+            <!-- 카드1 -->
             <div class="r-card full-col">
                 <span class="r-label">모집 대상</span>
                 <strong class="r-value">취업이 필요한 누구나</strong>
             </div>
-
+            <!-- 카드2 -->
             <div class="r-card">
                 <span class="r-label">교육 기간</span>
                 <strong class="r-value">5개월 <span class="r-sub">(840시간)</span></strong>
             </div>
-
+            <!-- 카드3 -->
             <div class="r-card">
                 <span class="r-label">모집 정원</span>
                 <strong class="r-value">20명 <span class="r-sub">(정예 선발)</span></strong>
             </div>
+            <!-- ★★★ 아래 코드로 추가해서 카드 추가 가능★★★ -->
+            <!-- 345에서 348까지 주석풀어서 사용 -->
+            <!-- <div class="r-card">
+                <span class="r-label">모집 정원</span>
+                <strong class="r-value">20명 <span class="r-sub">(정예 선발)</span></strong>
+            </div> -->
             
             <div class="r-card full-col">
                 <span class="r-label">개강 일정</span>
@@ -438,12 +487,14 @@
     </div>
 </section>
 
-<!-- 시설안내---------------------------- -->
+<!-- 시설안내 (★★★이미지는 CSS 관리 됨 CSS 770참고★★★ )-->
 <section class="facility-section" id="facility">
     <div class="section-header">
         <h2>시설 안내</h2>
         <p>교육과정 몰입을 위한 시설 안내</p>
     </div>
+
+    <!-- ★★★여기 div는 클래스만 있음 (이미지는 CSS에서 들어감)★★★ -->
     <div class="facility-gallery">
         <div class="gallery-item01 large"><span class="gallery-text">인포데스크</span></div>
         <div class="gallery-item02"><span class="gallery-text">리프레시 존</span></div>
@@ -539,7 +590,8 @@
     </div>
 </section>
 
-<!-- 프로젝트&포트폴리오---------------------------- -->
+<!-- 프로젝트&포트폴리오 (이미지 + 텍스트만 교체하면 됨)---------------------------- -->
+<!-- 프로젝트 카드 구조는 JS 슬라이드와 연결되어 있으므로 클래스명 및 구조 변경 금지 -->
 <section class="project-section" id="project">
     <div class="section-header">
         <h2>프로젝트&포트폴리오</h2>
@@ -547,13 +599,18 @@
     </div>
     
     <div class="project-wrapper">
+        <!-- 왼쪽 이동버튼 JS에서 슬라이드 제어 (수정X) -->
         <button class="nav-btn prev-btn" aria-label="이전 프로젝트">❮</button>
         
         <div class="project-container">
+
+            <!-- 이 구조 그대로 복사해서 추가 하면 됨 -->
             <div class="project-card">
                 <div class="project-img">
+                    <!-- 이미지 경로(src)만 교체하면 됨 -->
                     <img src="./images/pj01.png" alt="신차구매">
                 </div>
+                <!-- 텍스트영역 -->
                 <div class="project-info">
                     <h3>차량 구매 플랫폼 구현</h3>
                     <p>프론트엔드 과정 학생들과 백엔드 과정 학생들이 팀 협업으로 만든 신차구매 사이트 프로젝트</p>
@@ -649,7 +706,7 @@
                 </div>
             </div>
         </div>
-
+        <!-- 오른쪽 이동버튼 JS에서 슬라이드 제어 (수정X) -->
         <button class="nav-btn next-btn" aria-label="다음 프로젝트">❯</button>
     </div>
 </section>
