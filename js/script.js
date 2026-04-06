@@ -209,4 +209,34 @@ document.addEventListener('DOMContentLoaded', function(){
 
         startInterval(); // 최초 실행
     }
+
+    // 모달창 (이용약관, 개인정보처리방침) 열기/닫기 기능
+    const modalOpenBtns = document.querySelectorAll('.modal-open-btn');
+    const modalCloseBtns = document.querySelectorAll('.modal-close-btn');
+    const modalOverlays = document.querySelectorAll('.modal-overlay');
+
+    modalOpenBtns.forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('data-modal');
+            document.getElementById(targetId).classList.add('show');
+            document.body.classList.add('modal-open');
+        });
+    });
+
+    modalCloseBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            this.closest('.modal-overlay').classList.remove('show');
+            document.body.classList.remove('modal-open');
+        });
+    });
+
+    modalOverlays.forEach(overlay => {
+        overlay.addEventListener('click', function(e) {
+            if (e.target === this) {
+                this.classList.remove('show');
+                document.body.classList.remove('modal-open');
+            }
+        });
+    });
 });

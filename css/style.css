@@ -1136,7 +1136,7 @@ section{
     
     /* 👇 이 4줄이 무조건 한 세트로 묶여야 작동합니다! */
     display: -webkit-box;
-    -webkit-line-clamp: 3; /* 원하는 최대 줄 수 지정 (예: 3줄) */
+    -webkit-line-clamp: 3; /* 원하는 최대 줄 수 지정 (예: 3줄) vsCode내에 오류 적용되니까 신경쓰지말것*/
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
@@ -1395,6 +1395,87 @@ section{
     color: #64748b;
 }
 
+/* 이용약관 및 개인정보처리방침 모달창 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+}
+
+.modal-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* 하얀색 모달 박스 */
+.modal-box {
+    background-color: var(--color-white);
+    width: 90%;
+    max-width: 600px;
+    max-height: 80vh;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    transform: translateY(20px);
+    transition: transform 0.3s;
+}
+
+.modal-overlay.show .modal-box {
+    transform: translateY(0);
+}
+
+/* 모달창 헤더 (제목과 X 버튼) */
+.modal-header {
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--color-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--color-bg);
+}
+
+.modal-header h3 {
+    margin: 0;
+    font-size: 20px;
+    color: var(--color-text-dark);
+}
+
+.modal-close-btn {
+    background: none;
+    border: none;
+    font-size: 28px;
+    color: var(--color-text-gray);
+    cursor: pointer;
+    line-height: 1;
+    padding: 0;
+}
+
+.modal-close-btn:hover {
+    color: #ef4444;
+}
+
+/* 모달창 본문 (글씨 영역) */
+.modal-body {
+    padding: 24px;
+    overflow-y: auto;
+    font-size: 16px;
+    color: #334155;
+    line-height: 1.6;
+    white-space: pre-wrap;
+}
+body.modal-open {
+    overflow: hidden;
+}
+
 /* 지도반응형 */
 @media (max-width: 1250px) {
     .project-section .prev-btn { left: 10px; }
@@ -1466,7 +1547,6 @@ section{
     100% { transform: translateY(0); }
 }
 
-/* ⭐ 핵심: 카톡 버튼 강조 및 애니메이션 적용 */
 .quick-menu-pc .qm-kakao {
     background-color: #FEE500;
     border-color: #FEE500;
@@ -1474,11 +1554,10 @@ section{
     animation: float-animation 2.5s ease-in-out infinite;
 }
 
-/* 마우스 올렸을 때 살짝 커지면서 튀어나오는 효과 */
 .quick-menu-pc .qm-item:hover {
     transform: translateX(-5px) scale(1.05);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-    animation-play-state: paused; /* 마우스를 올리면 둥실둥실 애니메이션이 멈춤 */
+    animation-play-state: paused;
 }
 
 .quick-menu-pc .qm-icon {
@@ -1502,7 +1581,6 @@ section{
     margin-left: 12px;
 }
 
-/* TOP 버튼은 심플하게 동그라미 모양으로 변경 */
 .quick-menu-pc .qm-top {
     width: 56px; 
     border-radius: 50%;
@@ -1560,6 +1638,8 @@ section{
 .quick-menu-mobile .qmm-phone { background-color: var(--color-bg); color: var(--color-text-dark); }
 .quick-menu-mobile .qmm-kakao { background-color: #FEE500; color: #3c1e1e; }
 .quick-menu-mobile .qmm-top { background-color: var(--color-text-dark); flex: 0.4;}
+
+
 
 
 /* 반응형 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ */
