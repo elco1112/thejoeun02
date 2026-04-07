@@ -1073,91 +1073,103 @@ section{
 .project-section .next-btn { right: -65px; }
 
 
-/* review-section ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ */
-.review-section{
+
+/* 수강생 후기 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ */
+.review-section {
     padding: 100px 0;
     max-width: none;
     background-color: var(--color-white);
     border-top: 1px solid var(--color-border);
 }
 
-.review-section .section-header{
+.review-section .section-header {
     text-align: center;
     margin-bottom: 60px;
     padding: 0 5%;
 }
 
-.review-section .section-header h2{
+.review-section .section-header h2 {
     font-size: 48px;
     font-weight: 700;
 }
 
-.review-section .section-header p{
+.review-section .section-header p {
     font-size: 20px;
     color: var(--color-text-gray);
 }
 
-.review-section .marquee-container{
-    overflow: hidden;
-    width: 75%;
-    margin: 0 auto;
+.review-section .review-wrapper {
     position: relative;
-    padding: 20px 0;
+    width: 85%;
+    max-width: 1440px;
+    margin: 0 auto;
 }
 
-.review-section .marquee-container::before,
-.review-section .marquee-container::after{
+/* 양옆 하얀색 그라데이션 */
+.review-section .review-wrapper::before,
+.review-section .review-wrapper::after {
     content: '';
     position: absolute;
     top: 0;
     width: 150px;
     height: 100%;
-    z-index: 2;
+    z-index: 5;
     pointer-events: none;
 }
-
-.review-section .marquee-container::before{
+.review-section .review-wrapper::before {
     left: 0;
     background: linear-gradient(to right, var(--color-white), transparent);
 }
-
-.review-section .marquee-container::after{
+.review-section .review-wrapper::after {
     right: 0;
     background: linear-gradient(to left, var(--color-white), transparent);
 }
 
-.review-section .marquee-track{
+.review-section .review-container {
     display: flex;
     gap: 24px;
-    width: max-content;
-    animation: infiniteScroll 60s linear infinite;
+    overflow-x: auto;
+    padding: 20px 0 30px; 
+    scrollbar-width: none; 
+    -ms-overflow-style: none; 
 }
 
-.review-section .marquee-track:hover{
-    animation-play-state: paused;
+.review-section .review-container::-webkit-scrollbar {
+    display: none; 
 }
 
-.review-section .review-card{
+.review-section .review-card {
+    flex: 0 0 auto; 
     width: 400px;
+    scroll-snap-align: start; 
     background-color: var(--color-bg);
     border: 1px solid var(--color-border);
     padding: 40px;
-    flex-shrink: 0;
     display: flex;
     flex-direction: column;
-    object-fit: contain;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.3s, box-shadow 0.3s;
+    user-select: none; /* 🚀 드래그 시 텍스트 선택 방지 */
 }
-.review-section .review-card>img{
+
+.review-section .review-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-md);
+}
+
+.review-section .review-card > img {
     margin-bottom: 20px;
 }
-.review-section .review-stars{
+
+.review-section .review-stars {
     color: #fbbf24;
     font-size: 18px;
     margin-bottom: 16px;
     text-align: right;
-    margin-top: auto;
+    margin-top: auto; 
 }
-.review-section .review-card h4{
+
+.review-section .review-card h4 {
     margin-bottom: 10px;
 }
 
@@ -1167,29 +1179,18 @@ section{
     font-weight: 300;
     color: var(--color-text-dark);
     margin-bottom: 20px;
-    
-    /* 👇 이 4줄이 무조건 한 세트로 묶여야 작동합니다! */
     display: -webkit-box;
-    -webkit-line-clamp: 3; /* 원하는 최대 줄 수 지정 (예: 3줄) vsCode내에 오류 적용되니까 신경쓰지말것*/
+    -webkit-line-clamp: 3; 
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
 
-.review-section .review-author{
+.review-section .review-author {
     display: block;
     font-size: 16px;
     color: var(--color-text-gray);
     font-weight: 700;
     text-align: right;
-}
-
-@keyframes infiniteScroll{
-    0%{
-        transform: translateX(0);
-    }
-    100%{
-        transform: translateX(-50%);
-    }
 }
 
 /* contact-area section ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ */
@@ -1679,8 +1680,8 @@ body.modal-open {
 
 /* 반응형 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ */
 @media (max-width: 1250px) {
-    .project-section .prev-btn, .photostory-section .prev-btn { left: 10px; }
-    .project-section .next-btn, .photostory-section .next-btn { right: 10px; }
+    .project-section .prev-btn, .photostory-section .prev-btn, .review-section .prev-btn { left: 10px; }
+    .project-section .next-btn, .photostory-section .next-btn, .review-section .next-btn { right: 10px; }
 }
 
 @media (max-width: 1024px){

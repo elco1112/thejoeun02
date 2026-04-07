@@ -28,15 +28,6 @@ document.addEventListener('DOMContentLoaded', function(){
         });
     });
 
-    // 2. 인피니트 롤링(Marquee) 복제 로직
-    const track = document.getElementById('marqueeTrack');
-    
-    if(track){
-        // 원본 12개의 리뷰 HTML 요소를 통째로 문자열로 가져옵니다.
-        const cloneHTML = track.innerHTML;
-        track.innerHTML += cloneHTML;
-    }
-
     // 3. 상담 폼 제출 (구글 시트 연동)
     const form = document.getElementById('newApplyForm');
     
@@ -68,7 +59,6 @@ document.addEventListener('DOMContentLoaded', function(){
             const originalText = submitBtn.textContent;
             
             // 전송 중 버튼 상태 변경
-            // 전송 중 버튼 상태 변경
             submitBtn.textContent = '예약 정보 전송 중...';
             submitBtn.style.backgroundColor = '#1e40af';
             submitBtn.disabled = true;
@@ -96,40 +86,37 @@ document.addEventListener('DOMContentLoaded', function(){
         });
     }
 
-    // 4. 포토스토리 & 프로젝트 섹션 좌우 화살표 슬라이드 통합 처리
+    // 4. [통합] 포토스토리, 프로젝트, 수강생 후기 좌우 화살표 슬라이드 처리
     function initSlider(containerSelector, wrapperSelector) {
         const container = document.querySelector(containerSelector);
+        if (!container) return; // 요소가 없으면 실행 안함
+        
         const prevBtn = document.querySelector(`${wrapperSelector} .prev-btn`);
         const nextBtn = document.querySelector(`${wrapperSelector} .next-btn`);
 
-        if (container && prevBtn && nextBtn) {
-            // 카드 한 개 기준 이동 거리 계산
+        if (prevBtn && nextBtn) {
             const getScrollAmount = () => {
                 const card = container.children[0];
-                return card.offsetWidth + 24; // gap 24px
+                return card.offsetWidth + 24; // 카드 너비 + gap(24px)
             };
 
-            // 다음 버튼
             nextBtn.addEventListener('click', () => {
                 const scrollAmount = getScrollAmount();
                 const maxScrollLeft = container.scrollWidth - container.clientWidth;
                 
                 if (container.scrollLeft >= maxScrollLeft - 10) {
-                    // 끝이면 처음으로
-                    container.scrollTo({ left: 0, behavior: 'smooth' });
+                    container.scrollTo({ left: 0, behavior: 'smooth' }); // 맨 끝이면 처음으로
                 } else {
                     container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
                 }
             });
 
-            // 이전 버튼
             prevBtn.addEventListener('click', () => {
                 const scrollAmount = getScrollAmount();
                 const maxScrollLeft = container.scrollWidth - container.clientWidth;
                 
                 if (container.scrollLeft <= 10) {
-                    // 처음이면 끝으로
-                    container.scrollTo({ left: maxScrollLeft, behavior: 'smooth' });
+                    container.scrollTo({ left: maxScrollLeft, behavior: 'smooth' }); // 처음이면 맨 끝으로
                 } else {
                     container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
                 }
@@ -137,7 +124,7 @@ document.addEventListener('DOMContentLoaded', function(){
         }
     }
 
-    // 함수 호출 (포토스토리, 프로젝트 각각 적용) +슬라이드 초기화
+    // 함수 호출 (3개 섹션 모두 적용!)
     initSlider('.photostory-container', '.photostory-wrapper');
     initSlider('.project-container', '.project-wrapper');
 
@@ -221,7 +208,7 @@ document.addEventListener('DOMContentLoaded', function(){
         startInterval(); // 최초 실행
     }
 
-    // 모달창 (이용약관, 개인정보처리방침) 열기/닫기 기능
+    // 7. 모달창 (이용약관, 개인정보처리방침) 열기/닫기 기능
     const modalOpenBtns = document.querySelectorAll('.modal-open-btn');
     const modalCloseBtns = document.querySelectorAll('.modal-close-btn');
     const modalOverlays = document.querySelectorAll('.modal-overlay');
@@ -250,4 +237,95 @@ document.addEventListener('DOMContentLoaded', function(){
             }
         });
     });
+
+// 8. 수강생 후기 전용: 무한 롤링 + 마우스 호버 정지 + 마우스 드래그 (버튼 없음)
+    function initReviewMarquee() {
+        const wrapper = document.querySelector('.review-wrapper');
+        const container = document.querySelector('.review-container'); 
+
+        if (!container) return;
+
+        container.style.scrollBehavior = 'auto';
+
+        const originalCards = [...container.children];
+        const cardWidth = originalCards[0].offsetWidth + 24; 
+        const originalWidth = cardWidth * originalCards.length;
+
+        // 1. 기존 카드 복제 (무한 스크롤을 위해)
+        originalCards.forEach(card => {
+            const clone = card.cloneNode(true);
+            container.appendChild(clone);
+        });
+
+        let isPaused = false;
+        let speed = 1; 
+        let animationId;
+
+        // 2. 무한 롤링 애니메이션
+        function playMarquee() {
+            if (!isPaused) {
+                container.scrollLeft += speed;
+                
+                if (container.scrollLeft >= originalWidth) {
+                    container.scrollLeft -= originalWidth;
+                }
+            }
+            animationId = requestAnimationFrame(playMarquee);
+        }
+
+        // 3. 마우스 호버 시 일시정지
+        wrapper.addEventListener('mouseenter', () => isPaused = true);
+        wrapper.addEventListener('mouseleave', () => isPaused = false);
+
+        // 4. 마우스 드래그 (스와이프) 기능
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        container.style.cursor = 'grab';
+
+        container.addEventListener('mousedown', (e) => {
+            isDown = true;
+            isPaused = true; // 드래그 중 롤링 정지
+            container.style.cursor = 'grabbing'; 
+            startX = e.pageX - container.offsetLeft;
+            scrollLeft = container.scrollLeft;
+        });
+
+        container.addEventListener('mouseleave', () => {
+            isDown = false;
+            container.style.cursor = 'grab';
+        });
+
+        container.addEventListener('mouseup', () => {
+            isDown = false;
+            container.style.cursor = 'grab';
+        });
+
+        container.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault(); 
+            
+            const x = e.pageX - container.offsetLeft;
+            const walk = (x - startX) * 1.5; // 스와이프 감도
+            container.scrollLeft = scrollLeft - walk;
+
+            // 드래그 중 무한 연결
+            if (container.scrollLeft >= originalWidth) {
+                container.scrollLeft -= originalWidth;
+                startX = e.pageX - container.offsetLeft; 
+                scrollLeft = container.scrollLeft;
+            } else if (container.scrollLeft <= 0) {
+                container.scrollLeft += originalWidth;
+                startX = e.pageX - container.offsetLeft; 
+                scrollLeft = container.scrollLeft;
+            }
+        });
+
+        // 5. 최초 애니메이션 실행
+        playMarquee();
+    }
+    
+    // 무한 롤링 함수 실행
+    initReviewMarquee();
 });
