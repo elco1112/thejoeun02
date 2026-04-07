@@ -68,36 +68,31 @@ document.addEventListener('DOMContentLoaded', function(){
             const originalText = submitBtn.textContent;
             
             // 전송 중 버튼 상태 변경
+            // 전송 중 버튼 상태 변경
             submitBtn.textContent = '예약 정보 전송 중...';
             submitBtn.style.backgroundColor = '#1e40af';
             submitBtn.disabled = true;
 
-            try {
-                const response = await fetch("https://script.google.com/macros/s/AKfycbz9z6CdkklhV7X-1RCa3Bods3oVsMCQ795kuO00DU_n4_-MPKtTcYaq9m_XywDJFeGK/exec", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "text/plain;charset=utf-8"
-                    },
-                    body: JSON.stringify(payload)
-                });
+            // 🚀 핵심: await를 빼서 구글 서버의 응답을 기다리지 않고 바로 다음 줄로 넘어갑니다.
+            fetch("https://script.google.com/macros/s/AKfycbz9z6CdkklhV7X-1RCa3Bods3oVsMCQ795kuO00DU_n4_-MPKtTcYaq9m_XywDJFeGK/exec", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "text/plain;charset=utf-8"
+                },
+                body: JSON.stringify(payload)
+            }).catch(error => {
+                // 에러가 나도 사용자 화면은 멈추지 않고, 개발자 도구(콘솔)에만 에러를 남깁니다.
+                console.error("구글 시트 전송 에러:", error);
+            });
 
-                const result = await response.json();
-
-                if (result.success) {
-                    alert("상담문의가 정상 접수되었습니다. 담당자가 확인 후 연락드리겠습니다.");
-                    form.reset(); // 폼 초기화
-                } else {
-                    alert("저장 실패: " + result.message);
-                }
-            } catch (error) {
-                console.error(error);
-                alert("전송 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.");
-            } finally {
-                // 버튼 상태 원상복구
-                submitBtn.textContent = originalText;
-                submitBtn.style.backgroundColor = '';
-                submitBtn.disabled = false;
-            }
+            // fetch를 던지자마자(0.1초 만에) 바로 고객에게 완료 알림을 띄웁니다!
+            alert("상담문의가 정상 접수되었습니다. 담당자가 확인 후 연락드리겠습니다.");
+            
+            // 폼 초기화 및 버튼 원상복구
+            form.reset(); 
+            submitBtn.textContent = originalText;
+            submitBtn.style.backgroundColor = '';
+            submitBtn.disabled = false;
         });
     }
 
