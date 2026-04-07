@@ -1849,11 +1849,10 @@ body.modal-open {
     .review-section .section-header p{
         font-size: 16px;
     }
-    .review-section .marquee-container::before,
-    .review-section .marquee-container::after{
+    .review-section .review-wrapper::before,
+    .review-section .review-wrapper::after {
         display: none;
     }
-    
     /* 6. 폼 및 포토스토리 */
     .contact-area .contact-form .form-grid {
         grid-template-columns: 1fr;
